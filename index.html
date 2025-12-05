@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Rapid Auto + | Spécialiste Pare-Brise</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Rapid Auto +, garage spécialisé dans le remplacement et la réparation de pare-brise. Intervention rapide, prise en charge assurance, conseils personnalisés." />
+  <style>
+    :root {
+      --primary: #e53935;   /* rouge logo */
+      --primary-dark: #c62828;
+      --accent: #111827;
+      --bg: #f3f4f6;
+      --text: #111827;
+      --muted: #6b7280;
+      --card-bg: #ffffff;
+      --border: #e5e7eb;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    /* HEADER / NAV */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: #ffffffcc;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 1px 0 rgba(229, 231, 235, 0.9);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+      gap: 16px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    .logo-text {
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+
+    .phone-inline {
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.18s ease;
+      background: #fff;
+      color: var(--accent);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 10px 25px rgba(229, 57, 53, 0.35);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(198, 40, 40, 0.4);
+    }
+
+    .btn-outline {
+      border-color: var(--border);
+      background: #fff;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* HERO */
+    main {
+      padding-bottom: 60px;
+    }
+
+    .hero {
+      padding: 32px 0 40px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 32px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: #fee2e2;
+      color: #b91c1c;
+      font-size: 0.78rem;
+      margin-bottom: 12px;
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 3vw, 2.6rem);
+      margin-bottom: 10px;
+      color: var(--accent);
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .hero-sub {
+      font-size: 0.98rem;
+      color: var(--muted);
+      margin-bottom: 16px;
+      max-width: 540px;
+    }
+
+    .hero-list {
+      list-style: none;
+      font-size: 0.9rem;
+      margin-bottom: 18px;
+      color: var(--accent);
+    }
+
+    .hero-list li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .check {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      border: 1.5px solid #16a34a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: #16a34a;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .hero-note {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-right {
+      background: radial-gradient(circle at top, rgba(229, 57, 53, 0.08), transparent 60%),
+                  radial-gradient(circle at bottom, rgba(15, 23, 42, 0.08), transparent 60%);
+      border-radius: var(--radius-lg);
+      padding: 18px;
+    }
+
+    .hero-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 18px 18px 20px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+      font-size: 0.9rem;
+    }
+
+    .hero-card h2 {
+      font-size: 1.05rem;
+      margin-bottom: 4px;
+      color: var(--accent);
+    }
+
+    .hero-card small {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+      margin-bottom: 12px;
+    }
+
+    .stat {
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      padding: 10px;
+      background: #f9fafb;
+      text-align: left;
+      font-size: 0.78rem;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 0.95rem;
+      color: var(--accent);
+    }
+
+    .zone {
+      margin-top: 6px;
+      padding: 10px;
+      border-radius: var(--radius-md);
+      background: #fef2f2;
+      border: 1px dashed #fecaca;
+      font-size: 0.8rem;
+      color: var(--accent);
+    }
+
+    /* SECTIONS GENERALES */
+    section {
+      padding: 40px 0;
+    }
+
+    section h2 {
+      font-size: 1.6rem;
+      margin-bottom: 8px;
+      color: var(--accent);
+    }
+
+    .section-intro {
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 620px;
+      margin-bottom: 22px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 16px 16px 18px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+      font-size: 0.9rem;
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 4px;
+      color: var(--accent);
+    }
+
+    .card small {
+      font-size: 0.78rem;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    /* PROCESS */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .step {
+      position: relative;
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 16px 16px 16px 32px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+      font-size: 0.9rem;
+    }
+
+    .step-number {
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.7rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+
+    /* AVANTAGES */
+    .advantages {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .adv {
+      background: #111827;
+      color: #f9fafb;
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      font-size: 0.9rem;
+    }
+
+    .adv h3 {
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    /* AVIS SIMPLIFIES */
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .testimonial {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+      font-size: 0.88rem;
+    }
+
+    .stars {
+      color: #16a34a;
+      font-size: 0.8rem;
+      margin-bottom: 4px;
+    }
+
+    .testimonial strong {
+      display: block;
+      margin-top: 8px;
+      font-size: 0.84rem;
+      color: var(--accent);
+    }
+
+    /* PRISE DE RDV / CONTACT */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 22px;
+      align-items: flex-start;
+    }
+
+    form {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 18px 18px 20px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+      font-size: 0.9rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 0.8rem;
+      color: var(--accent);
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      background: #f9fafb;
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+      outline: none;
+      transition: border-color 0.15s ease, background 0.15s ease;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--primary);
+      background: #fff;
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .contact-info {
+      font-size: 0.9rem;
+    }
+
+    .contact-info-block {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+      margin-bottom: 12px;
+    }
+
+    .contact-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+
+    .contact-main {
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .map-placeholder {
+      margin-top: 6px;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    /* FAQ */
+    .faq-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      font-size: 0.9rem;
+    }
+
+    .faq-item {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .faq-item h3 {
+      font-size: 0.92rem;
+      margin-bottom: 4px;
+      color: var(--accent);
+    }
+
+    .faq-item p {
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 16px 0 18px;
+      font-size: 0.8rem;
+      color: var(--muted);
+      background: #ffffff;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 6px;
+      align-items: center;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+      }
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-right {
+        order: -1;
+      }
+      .grid-3,
+      .steps,
+      .advantages,
+      .testimonials,
+      .faq-list {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav-cta {
+        display: none;
+      }
+      section {
+        padding: 32px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <!-- Mets ton logo sous ce nom de fichier dans le même dossier que index.html -->
+        <img src="logo-rapid-auto.png" alt="Rapid Auto +" />
+        <div class="logo-text">Rapid Auto +</div>
+      </div>
+      <nav class="nav-links">
+        <a href="#services">Nos services</a>
+        <a href="#process">Comment ça marche ?</a>
+        <a href="#rdv">Prendre rendez-vous</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="nav-cta">
+        <span class="phone-inline">📞 07 57 82 38 68</span>
+        <a href="#rdv" class="btn btn-primary">Demander un devis</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="container hero" id="top">
+      <div>
+        <div class="badge">
+          <span class="badge-dot"></span>
+          Garage spécialiste pare-brise
+        </div>
+        <h1>
+          Remplacement & réparation de pare-brise
+          <span>par Rapid Auto +</span>
+        </h1>
+        <p class="hero-sub">
+          Impact, fissure ou pare-brise cassé : Rapid Auto + s’occupe de votre vitrage
+          rapidement, avec une prise en charge possible par votre assurance et des conseils
+          personnalisés pour rouler en sécurité.
+        </p>
+        <ul class="hero-list">
+          <li>
+            <div class="check">✓</div>
+            Intervention rapide sur rendez-vous
+          </li>
+          <li>
+            <div class="check">✓</div>
+            Vérification de la prise en charge par votre assurance
+          </li>
+          <li>
+            <div class="check">✓</div>
+            Spécialiste pare-brise et vitrages auto
+          </li>
+        </ul>
+        <div class="hero-actions">
+          <a href="#rdv" class="btn btn-primary">Prendre rendez-vous</a>
+          <a href="tel:+33757823868" class="btn btn-outline">📞 Appeler le garage</a>
+        </div>
+        <p class="hero-note">
+          Un doute sur l’état de votre pare-brise ? Envoyez-nous une photo via le formulaire,
+          on vous dit si la réparation est possible.
+        </p>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-card">
+          <h2>Demande rapide en ligne</h2>
+          <small>Expliquez votre problème, on vous rappelle pour confirmer le rendez-vous.</small>
+          <div class="stats">
+            <div class="stat">
+              <strong>+1 000</strong>
+              interventions pare-brise
+            </div>
+            <div class="stat">
+              <strong>1h env.</strong>
+              durée moyenne de remplacement
+            </div>
+            <div class="stat">
+              <strong>Conseils</strong>
+              avant contrôle technique
+            </div>
+          </div>
+          <div class="zone">
+            ℹ️ Rapid Auto + intervient sur les pare-brise de véhicules légers et utilitaires.
+            Contactez-nous pour vérifier la disponibilité selon votre modèle.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="container">
+        <h2>Nos services pare-brise & vitrages</h2>
+        <p class="section-intro">
+          Rapid Auto + est un garage entièrement tourné vers le vitrage automobile :
+          diagnostic, réparation ou remplacement complet. Nous travaillons avec des vitrages
+          conformes aux normes constructeur.
+        </p>
+
+        <div class="grid-3">
+          <div class="card">
+            <h3>Réparation d’impact</h3>
+            <small>Solution lorsque le pare-brise est encore récupérable</small>
+            <p>
+              Pour les petits impacts localisés, nous injectons une résine spéciale afin de
+              stopper la fissuration et de conserver votre pare-brise, quand cela est possible.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Remplacement de pare-brise</h3>
+            <small>Pare-brise neuf, posé dans les règles de l’art</small>
+            <p>
+              Lorsque le dommage est trop important, nous remplaçons votre pare-brise par un
+              vitrage adapté à votre véhicule, avec une pose soignée et des temps de séchage
+              respectés.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Contrôle & conseils sécurité</h3>
+            <small>Avant contrôle technique ou long trajet</small>
+            <p>
+              Un doute sur une fissure ou un éclat ? Passez au garage, nous contrôlons l’état
+              du pare-brise et vous conseillons sur la meilleure solution à adopter.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="process">
+      <div class="container">
+        <h2>Comment ça marche ?</h2>
+        <p class="section-intro">
+          Nous simplifions au maximum la prise en charge de votre pare-brise. Quelques étapes
+          suffisent pour reprendre la route en toute sécurité.
+        </p>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h3>Contact & premier diagnostic</h3>
+            <p>
+              Vous nous appelez au <strong>07 57 82 38 68</strong> ou remplissez le
+              formulaire avec une photo du pare-brise et les infos de votre véhicule.
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <h3>Vérification assurance & devis</h3>
+            <p>
+              Nous vérifions avec vous les garanties de votre contrat auto, puis nous vous
+              proposons un devis clair : réparation ou remplacement.
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <h3>Intervention au garage</h3>
+            <p>
+              Vous déposez votre véhicule au garage Rapid Auto +. Nous intervenons sur le
+              pare-brise, effectuons les contrôles nécessaires et vous prévenons dès que
+              c’est terminé.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AVANTAGES -->
+    <section id="avantages">
+      <div class="container">
+        <h2>Pourquoi choisir Rapid Auto + ?</h2>
+        <p class="section-intro">
+          En vous adressant à un garage spécialisé dans le pare-brise, vous bénéficiez d’un
+          interlocuteur unique et de conseils adaptés à votre situation.
+        </p>
+
+        <div class="advantages">
+          <div class="adv">
+            <h3>Spécialiste pare-brise</h3>
+            <p>
+              Le pare-brise est au cœur de notre activité : nous le réparons ou le remplaçons
+              tous les jours, sur de nombreux modèles de véhicules.
+            </p>
+          </div>
+          <div class="adv">
+            <h3>Accompagnement assurance</h3>
+            <p>
+              Nous vous aidons à y voir clair sur votre contrat auto : franchise, garanties,
+              conditions de prise en charge selon votre situation.
+            </p>
+          </div>
+          <div class="adv">
+            <h3>Service de proximité</h3>
+            <p>
+              Un garage à taille humaine, disponible pour répondre à vos questions, planifier
+              un rendez-vous et vous conseiller avant vos déplacements.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AVIS (placeholder) -->
+    <section id="avis">
+      <div class="container">
+        <h2>Les avis de nos clients</h2>
+        <p class="section-intro">
+          Lorsque vous aurez vos premiers avis Google, vous pourrez les afficher ici
+          pour rassurer les futurs clients de Rapid Auto +.
+        </p>
+
+        <div class="testimonials">
+          <div class="testimonial">
+            <div class="stars">★★★★★</div>
+            <p>
+              « Pare-brise remplacé rapidement, explications claires et véhicule rendu propre.
+              Je recommande ce garage. »
+            </p>
+            <strong>Client Rapid Auto +</strong>
+          </div>
+          <div class="testimonial">
+            <div class="stars">★★★★★</div>
+            <p>
+              « Ils m’ont conseillé entre réparation et remplacement, très pro et à l’écoute. »
+            </p>
+            <strong>Automobiliste</strong>
+          </div>
+          <div class="testimonial">
+            <div class="stars">★★★★★</div>
+            <p>
+              « Prise de rendez-vous simple, bon suivi et aucun stress avant le contrôle
+              technique. »
+            </p>
+            <strong>Conducteur régulier</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRISE DE RDV / CONTACT -->
+    <section id="rdv">
+      <div class="container">
+        <h2>Prendre rendez-vous ou demander un devis</h2>
+        <p class="section-intro">
+          Décrivez-nous votre problème de pare-brise, nous vous recontactons pour confirmer
+          l’intervention et répondre à vos questions.
+        </p>
+
+        <div class="contact-grid">
+          <!-- Formulaire : à connecter plus tard à un outil (e-mail, CRM, etc.) -->
+          <form action="mailto:rapidautoplus@gmail.com" method="post" enctype="text/plain">
+            <div>
+              <label for="name">Nom / Prénom</label>
+              <input type="text" id="name" name="Nom" placeholder="Votre nom" required />
+            </div>
+            <div>
+              <label for="phone">Téléphone</label>
+              <input type="tel" id="phone" name="Téléphone" placeholder="07 57 82 38 68" required />
+            </div>
+            <div>
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="Email" placeholder="votre@email.com" />
+            </div>
+            <div>
+              <label for="service">Type de besoin</label>
+              <select id="service" name="Service">
+                <option value="">Sélectionnez une option</option>
+                <option value="Réparation impact">Réparation d’impact</option>
+                <option value="Remplacement pare-brise">Remplacement de pare-brise</option>
+                <option value="Contrôle pare-brise">Contrôle / conseil</option>
+              </select>
+            </div>
+            <div>
+              <label for="message">Détail du problème</label>
+              <textarea id="message" name="Détail" placeholder="Ex : impact côté passager, fissure qui s’étend, modèle du véhicule, année…"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%; margin-top:6px;">
+              Envoyer ma demande
+            </button>
+            <p class="hero-note" style="margin-top:6px;">
+              Ce formulaire utilise l’envoi par e-mail. Pour une solution plus avancée
+              (base de données, SMS, etc.), il faudra ajouter un système côté serveur.
+            </p>
+          </form>
+
+          <!-- Infos contact -->
+          <div class="contact-info">
+            <div class="contact-info-block">
+              <div class="contact-label">Téléphone</div>
+              <div class="contact-main">
+                📞 <a href="tel:+33757823868">07 57 82 38 68</a>
+              </div>
+              <p class="hero-note" style="margin-top:4px;">
+                N’hésitez pas à nous appeler pour un avis rapide sur votre pare-brise.
+              </p>
+            </div>
+            <div class="contact-info-block">
+              <div class="contact-label">E-mail</div>
+              <div class="contact-main">
+                ✉️ <a href="mailto:rapidautoplus@gmail.com">rapidautoplus@gmail.com</a>
+              </div>
+              <p class="hero-note" style="margin-top:4px;">
+                Envoyez-nous des photos de votre pare-brise pour un premier diagnostic.
+              </p>
+            </div>
+            <div class="contact-info-block">
+              <div class="contact-label">Adresse du garage</div>
+              <div class="contact-main">
+                Rapid Auto +<br />
+                <!-- Remplace cette ligne par l’adresse exacte -->
+                Adresse du garage – France
+              </div>
+              <div class="map-placeholder">
+                Vous pourrez intégrer ici une carte Google Maps avec l’adresse précise du garage.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="container">
+        <h2>Questions fréquentes</h2>
+        <p class="section-intro">
+          Quelques réponses rapides aux questions que l’on se pose souvent avant de faire
+          réparer ou remplacer un pare-brise.
+        </p>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <h3>Réparation ou remplacement : comment choisir ?</h3>
+            <p>
+              Cela dépend de la taille et de l’emplacement de l’impact. En nous envoyant une
+              photo, nous pouvons vous dire si une réparation est envisageable ou si le
+              remplacement est préférable.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3>Combien de temps mon véhicule reste immobilisé ?</h3>
+            <p>
+              La plupart des remplacements se font en environ une heure, à laquelle s’ajoute
+              un temps de séchage recommandé avant de reprendre la route.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3>Mon assurance prend-elle en charge le pare-brise ?</h3>
+            <p>
+              Selon votre contrat (bris de glace, tous risques, etc.), tout ou partie de
+              l’intervention peut être couverte. Nous faisons le point avec vous lors du
+              premier contact.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3>Puis-je rouler avec un impact ?</h3>
+            <p>
+              Un petit impact peut rapidement se transformer en fissure, surtout avec les
+              variations de température. Le mieux est de nous contacter rapidement pour
+              éviter un remplacement complet.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> Rapid Auto + – Spécialiste pare-brise. Tous droits réservés.</div>
+      <div>Mentions légales · Politique de confidentialité</div>
+    </div>
+  </footer>
+
+  <script>
+    // Année automatique dans le footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
